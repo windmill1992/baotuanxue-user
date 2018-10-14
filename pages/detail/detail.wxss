@@ -1,0 +1,154 @@
+/* pages/detail/detail.wxss */
+
+.container {
+  background: #fbfbfb;
+}
+
+.cover {
+  width: 100%;
+  position: relative;
+}
+
+.cover image {
+  width: 100%;
+  height: 500rpx;
+  vertical-align: top;
+}
+
+.cover .time {
+  position: absolute;
+  top: 20rpx;
+  left: 0;
+  padding: 0 30rpx;
+  line-height: 58rpx;
+  color: #fff;
+  font-size: 30rpx;
+  background: rgba(0, 191, 74, 0.6);
+  border-top-right-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+}
+
+.info {
+  padding: 40rpx 30rpx;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.info .title {
+  font-size: 36rpx;
+  color: #333;
+}
+
+.info .txt {
+  font-size: 24rpx;
+  color: #666;
+  margin-top: 20rpx;
+}
+
+.box {
+  padding: 0 30rpx 100rpx;
+}
+
+.box .nav-a {
+  padding: 30rpx 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.box .user image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 100%;
+  margin-right: 20rpx;
+}
+
+.box .user .name {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.box .more1 image {
+  width: 20rpx;
+  height: 40rpx;
+}
+
+.box .txt1 {
+  font-size: 30rpx;
+  color: #333;
+  padding: 30rpx 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.content image {
+  width: 100%;
+  height: 400rpx;
+  margin-top: 30rpx;
+}
+
+.content .txt {
+	font-size: 28rpx;
+	color: #333;
+}
+
+.bot {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+	background: #fff;
+}
+
+.bot .btn1 {
+  width: 200rpx;
+  position: relative;
+  border-top: 1px solid #f3f3f3;
+}
+
+.bot .btn2::before {
+  content: '';
+  display: inline-block;
+  width: 1px;
+  height: 80rpx;
+  background: #ccc;
+  position: absolute;
+  left: 1px;
+  top: 10rpx;
+}
+
+.bot .btn1 .txt1 {
+  font-size: 30rpx;
+  color: #333;
+  line-height: 40rpx;
+  margin-top: 2px;
+}
+
+.bot .btn2 {
+  width: 270rpx;
+  line-height: 40rpx;
+  border-top: 1px solid #f3f3f3;
+	position: relative;
+}
+
+.bot .btn2 .txt2 {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.bot .btn2 .num1 {
+  font-size: 24rpx;
+  color: #333;
+}
+
+.bot .btn3 {
+  min-width: 280rpx;
+  background: #00bf4a;
+  border-top: 1px solid #00bf4a;
+  color: #fff;
+}
+
+.bot .btn3 .txt3 {
+  font-size: 28rpx;
+}
+
+.bot .btn3 .num2 {
+  font-size: 24rpx;
+}

@@ -1,0 +1,10 @@
+<!--pages/perfSuc/perfSuc.wxml-->
+<view class='container'>
+	<view class='box txtC'>
+		<image src='../../img/suc.png'></image>
+		<view class='txt'>资料保存成功</view>
+		<view class='btns'>
+			<button class='btn green bold' bindtap='know'>我知道了</button>
+		</view>
+	</view>
+</view>

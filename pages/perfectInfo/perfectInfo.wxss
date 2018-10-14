@@ -1,0 +1,16 @@
+/* pages/perfectInfo/perfectInfo.wxss */
+@import '../../utils/input.wxss';
+
+.container {
+  padding: 0 30rpx;
+}
+
+.inp-item .inp {
+  padding-right: 0;
+  height: 86rpx;
+  line-height: 86rpx;
+}
+
+.btns {
+	margin-top: 100rpx;
+}

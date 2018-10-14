@@ -1,0 +1,81 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class='container'>
+	<view class='top flex fcen spb'>
+		<image src='../../img/info_bg.png' class='bg'></image>
+		<view class='left' wx:if='{{info.orderStatus == 1}}'>
+			<view class='txt bold'>还差{{info.groupBuyingNumber - info.buyerList.length}}人成团</view>
+			<view class='txt1'>距离结束还有{{info.time}}</view>
+		</view>
+		<view class='left' wx:elif='{{info.orderStatus == 2}}'>
+			<view class='txt bold'>已成团</view>
+		</view>
+		<view class='left' wx:elif='{{info.orderStatus == 3}}'>
+			<view class='txt bold'>拼团失败</view>
+			<view class='txt1'>拼团已结束，未成功拼团</view>
+		</view>
+		<view class='right' wx:if='{{info.orderStatus == 1}}'>
+			<button class='invite' open-type='share'>邀请好友参与</button>
+		</view>
+	</view>
+	<view class='mid'>
+		<view class='flex fcen'>
+			<view class='user-list flex'>
+				<image src='{{item.avatar}}' wx:for='{{info.buyerList}}' wx:key='userId'></image>
+			</view>
+			<view class='txt2'>{{info.buyerList.length}}人已支付</view>
+		</view>
+		<navigator url='/pages/storeInfo/storeInfo?uid={{info.buyerList[0].userId}}' class='user flex spb fcen'>
+			<view class='flex fcen'>
+				<image src='{{info.buyerList[0].avatar}}' class='avatar'></image>
+				<view class='nick'>{{info.buyerList[0].userName}}</view>
+			</view>
+			<view class='arr'>
+				<image src='../../img/more.png'></image>
+			</view>
+		</navigator>
+		<view class='info flex fcen'>
+			<view class='pic fshrink0'>
+				<image src='{{groupInfo.cover}}' mode='aspectFill'></image>
+			</view>
+			<view>
+				<view class='txt3 bold'>{{groupInfo.proName}}</view>
+				<view class='txt4 bold'>¥<text>{{groupInfo.groupBuyingPrice}}</text></view>
+			</view>
+			<view class='price'>已支付{{groupInfo.groupBuyingPrice}}元</view>	
+		</view>
+		<view class='call' bindtap='call'>拨打电话</view>
+		<view class='other'>
+			<view class='txt5'>订单编号：{{info.orderNo}}</view>
+			<view class='txt5'>支付方式：微信支付</view>
+			<view class='txt5'>下单时间：{{info.createTime}}</view>
+			<view class='txt5'>支付类别：{{info.groupBuyingNumber}}人团</view>
+			<view class='txt5' wx:if='{{info.orderStatus == 1}}'>成交时间：暂未拼成</view>
+		</view>
+		<block wx:if='{{info.orderStatus == 1}}'>
+			<view class='btns'>
+				<button class='btn green bold' open-type='share'>邀请好友参与拼团</button>
+			</view>
+			<view class='txt6'>联系平台，申请退款</view>
+		</block>
+		<block wx:if='{{info.orderStatus == 3}}'>
+			<view class='txt7'>支付费用将在3个工作日原路返回</view>
+		</block>
+		<block wx:if='{{info.orderStatus == 2}}'>
+			<view class='btns'>
+				<button class='btn green bold'>已完成</button>
+			</view>
+			<view class='txt6'>联系平台，申请退款</view>
+			<view class='qr flex spc'>
+				<canvas canvas-id='cvs' class='cv'></canvas>
+			</view>
+			<view class='txt6'>到店请出示二维码核销</view>
+		</block>
+		<block wx:if='{{info.orderStatus == 0}}'>
+			<view class='txt6'>直接购买暂不支持退款</view>
+			<view class='qr flex spc'>
+				<canvas canvas-id='cvs' class='cv'></canvas>
+			</view>
+			<view class='txt6'>到店请出示二维码核销</view>
+		</block>
+	</view>
+</view>

@@ -1,0 +1,55 @@
+<!--pages/storeInfo/storeInfo.wxml-->
+<view class='container'>
+  <view class='top'>
+    <image class='bg' src='../../img/info_bg.png'></image>
+    <view class='user flex fcen'>
+      <image src='../../img/logo.png'></image>
+      <view class='nick'>天津NB舞蹈工作室</view>
+    </view>
+  </view>
+  <view class='mid'>
+    <view class='item flex fcen'>
+      <image src='../../img/industry.png' mode='aspectFit'></image>
+      <view class='txt'>行业</view>
+      <view class='txt1'>{{info.companyIndustry}}</view>
+    </view>
+    <view class='item flex fcen'>
+      <image src='../../img/city.png' mode='aspectFit'></image>
+      <view class='txt'>城市</view>
+      <view class='txt1'>{{info.city}}</view>
+    </view>
+    <view class='item flex fcen'>
+      <image src='../../img/addr.png' mode='aspectFit'></image>
+      <view class='txt'>地址</view>
+      <view class='txt1'>{{info.address}}</view>
+    </view>
+    <view class='item flex fcen'>
+      <image src='../../img/linkman.png' mode='aspectFit'></image>
+      <view class='txt'>联系人</view>
+      <view class='txt1'>{{info.linkMan}}</view>
+    </view>
+    <view class='item flex fcen'>
+      <image src='../../img/mobile.png' mode='aspectFit'></image>
+      <view class='txt'>手机号</view>
+      <view class='txt1'>{{info.linkMobile}}</view>
+    </view>
+    <view class='item flex fcen'>
+      <image src='../../img/wxid.png' mode='aspectFit'></image>
+      <view class='txt'>微信号</view>
+      <view class='txt1'>{{info.linkWechat}}</view>
+    </view>
+  </view>
+  <view class='btns'>
+    <button class='btn green bold' bindtap='showCall'>拨打电话咨询</button>
+  </view>
+	<view class='tel-box {{showTel ? "show" : ""}}'>
+		<view class='mask'></view>
+		<view class='con'>
+			<view class='top-d'>
+				<view class='txt'>{{info.linkMobile}}</view>
+				<button class='txt' bindtap='call'>呼叫</button>
+			</view>
+			<view class='bot-d txt' bindtap='closeTel'>取消</view>
+		</view>
+	</view>
+</view>

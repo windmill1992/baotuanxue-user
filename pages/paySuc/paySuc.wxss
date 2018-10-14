@@ -1,0 +1,2 @@
+/* pages/paySuc/paySuc.wxss */
+@import '../perfSuc/perfSuc.wxss';

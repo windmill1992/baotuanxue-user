@@ -1,0 +1,86 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.0.9",
+	"appid": "wxf53853fc0d818bff",
+	"projectname": "2baotuanxue",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 3,
+			"list": [
+				{
+					"id": -1,
+					"name": "login",
+					"pathName": "pages/login/login",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "perfectInfo",
+					"pathName": "pages/perfectInfo/perfectInfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "perfSuc",
+					"pathName": "pages/perfSuc/perfSuc",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "detail",
+					"pathName": "pages/detail/detail",
+					"query": "id=3"
+				},
+				{
+					"id": 4,
+					"name": "orderDetail",
+					"pathName": "pages/orderDetail/orderDetail",
+					"query": "id=4&gid=1"
+				},
+				{
+					"id": -1,
+					"name": "storeInfo",
+					"pathName": "pages/storeInfo/storeInfo",
+					"query": "id=1"
+				},
+				{
+					"id": -1,
+					"name": "paySuc",
+					"pathName": "pages/paySuc/paySuc",
+					"query": "id=1"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,44 @@
+<!--pages/detail/detail.wxml-->
+<view class='container'>
+	<view class='cover'>
+		<image src='{{info.cover}}' mode='widthFix'></image>
+		<view class='time' wx:if='{{info.groupBuyingStatus == 1}}'>距离结束还有{{info.time}}</view>
+		<view class='time' wx:elif='{{info.groupBuyingStatus == 2}}'>已完成</view>
+		<view class='time' wx:elif='{{info.groupBuyingStatus == 3}}'>已失败</view>
+	</view>
+	<view class='info'>
+		<view class='title bold'>{{info.proName}}</view>
+		<view class='txt'>已售：{{info.soldQuantity}}件</view>
+	</view>
+	<view class='box'>
+		<navigator url='/pages/storeInfo/storeInfo?uid={{info.userId}}' class='nav-a flex spb fcen'>
+			<view class='user flex fcen'>
+				<image src='{{info.merchantAvatar}}'></image>
+				<view class='name'>{{info.merchantName}}</view>
+			</view>
+			<view class='more1'>
+				<image src='../../img/more.png'></image>
+			</view>
+		</navigator>
+		<view class='txt1'>拼团详情</view>
+		<view class='content'>
+			<view class='pic' wx:for='{{info.groupBuyingExtendInfoVOList}}' wx:key='introType'>
+				<image src='{{item.url}}' mode='widthFix'></image>
+				<view class='txt'>{{item.text}}</view>
+			</view>
+		</view>
+	</view>
+	<view class='bot flex'>
+		<navigator target='miniProgram' app-id='' path='/pages/index/index' class='btn1 fcol spc fcen'>
+			<view class='txt1'>我也要发起</view>
+		</navigator>
+		<view class='btn2 fcol spc fcen' bindtap='buy' data-type='2'>
+			<view class='num1'>¥{{info.proPrice}}</view>
+			<view class='txt2 bold'>单独购买</view>
+		</view>
+		<view class='btn3 flex1 fcol spc fcen' bindtap='buy' data-type='1'>
+			<view class='num2'>¥{{info.groupBuyingPrice}}</view>
+			<view class='txt3 bold'>{{info.groupBuyingNumber}}人成团</view>
+		</view>
+	</view>
+</view>

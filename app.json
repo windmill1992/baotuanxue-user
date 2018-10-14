@@ -1,0 +1,19 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/login/login",
+		"pages/logs/logs",
+		"pages/perfectInfo/perfectInfo",
+		"pages/perfSuc/perfSuc",
+		"pages/detail/detail",
+		"pages/orderDetail/orderDetail",
+		"pages/storeInfo/storeInfo",
+		"pages/paySuc/paySuc"
+	],
+	"window": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "",
+		"navigationBarTextStyle": "black"
+	}
+}
