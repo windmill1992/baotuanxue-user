@@ -1,17 +1,17 @@
 // pages/orderDetail/orderDetail.js
 const app = getApp().globalData;
 const api = {
-	orderInfo: app.baseUrl + '/btx/btx-rest/order-info',					//订单详情
-	groupInfo: app.baseUrl + '/btx/btx-rest/group-buying-info',		//拼团详情
+	orderInfo: app.baseUrl + '/btx/btx-rest/writeOff-order-info',		//订单详情
+	groupInfo: app.baseUrl + '/btx/btx-rest/group-buying-info',			//拼团详情
 };
 const QRCode = require('../../utils/qrcode.js');
 Page({
   data: {
-		qrUrl: '',
+		
   },
   onLoad: function (options) {
 		if (options.id) {
-			this.setData({ id: options.id, gid: options.gid });
+			this.setData({ id: options.id, gid: options.gid, uid: options.uid });
 			this.getData();
 		} else {
 			wx.redirectTo({
@@ -22,14 +22,13 @@ Page({
 	getData: function () {
 		wx.showLoading({
 			title: '加载中...',
-		})
+		});
+		let dd = this.data;
 		wx.request({
-			url: api.orderInfo,
-			method: 'GET',
+			url: api.orderInfo + '?groupBuyingId=' + dd.id + '&groupId=' + dd.gid + '&buyUserId='+ dd.uid,
+			method: 'POST',
 			header: app.header,
-			data: {
-				groupId: this.data.id,
-			},
+			data: {},
 			success: res => {
 				if (res.data.resultCode == 200 && res.data.resultData) {
 					this.setData({ info: res.data.resultData });
@@ -68,7 +67,7 @@ Page({
 			method: 'POST',
 			header: app.header,
 			data: {
-				groupBuyingId: this.data.gid,
+				groupBuyingId: this.data.id,
 				needGroupBuyingExtendInfo: true,
 				needSaleRecordInfo: false,
 			},
@@ -135,15 +134,15 @@ Page({
 	},
 	call: function () {
 		wx.makePhoneCall({
-			phoneNumber: app.serviceMobile,
+			phoneNumber: this.info.merchantMobile,
 		})
 	},
   onShareAppMessage: function () {
 		let dd = this.data;
-		let dd2 = dd.info;
+		let dd2 = dd.groupInfo;
 		return {
-			title: `${dd2.buyerList[0].userName}邀您参与拼团啦~`,
-			path: `/pages/detail/detail?id=${dd.id}&gid=${dd.gid}&uid=${dd2.buyerList[0].userId}`,
+			title: `${dd.info.userBaseVO.userName}邀您参与拼团~`,
+			path: `/pages/detail/detail?id=${dd.id}&gid=${dd.gid}&uid=${dd.uid}`,
 			imageUrl: dd2.cover,
 		}
   }

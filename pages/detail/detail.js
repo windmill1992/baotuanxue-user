@@ -1,7 +1,7 @@
 // pages/detail/detail.js
 const app = getApp().globalData;
 const api = {
-	orderInfo: app.baseUrl + '/btx/btx-rest/group-buying-info', 		//拼团信息
+	groupInfo: app.baseUrl + '/btx/btx-rest/group-buying-info', 		//拼团信息
 	buyGroup: app.baseUrl + '/btx/btx-rest/click-buy',					 		//购买
 	buyCallback: app.baseUrl + '/btx/btx-rest/buy-callback',				//支付回调
 }
@@ -14,7 +14,8 @@ Page({
 		if (options.id) {
 			let user = wx.getStorageSync('user');
 			let gid = options.gid ? options.gid : 0;
-			this.setData({ id: options.id, gid: gid, user: user });
+			let uid = options.uid ? options.uid : app.header.userId;
+			this.setData({ id: options.id, gid: gid, user: user, uid: uid });
 			this.getData();
 		} else {
 			wx.redirectTo({
@@ -27,7 +28,7 @@ Page({
 			title: '加载中...',
 		});
 		wx.request({
-			url: api.orderInfo,
+			url: api.groupInfo,
 			method: 'POST',
 			header: app.header,
 			data: {
@@ -82,7 +83,7 @@ Page({
 			let t = e.currentTarget.dataset.type;
 			wx.showLoading({
 				title: '正在提交...',
-			})
+			});
 			wx.request({
 				url: api.buyGroup,
 				method: 'POST',
@@ -94,6 +95,7 @@ Page({
 				},
 				success: res => {
 					if (res.data.resultCode == 200 && res.data.resultData) {
+						this.setData({ gid: res.data.resultData });
 						this.submit(t);
 					} else {
 						wx.hideLoading();
@@ -121,8 +123,9 @@ Page({
 		}
 	},
 	submit: function (t) {
+		let dd = this.data;
 		wx.request({
-			url: api.buyCallback + '?groupBuyingId=' + this.data.id + '&groupId=' + 4,
+			url: api.buyCallback + '?groupBuyingId=' + dd.id + '&groupId=' + dd.gid,
 			method: 'POST',
 			header: app.header,
 			data: {},
@@ -133,7 +136,7 @@ Page({
 					});
 					setTimeout(() => {
 						wx.navigateTo({
-							url: `/pages/paySuc/paySuc?id=4&type=${t}`,
+							url: `/pages/paySuc/paySuc?id=${dd.id}&gid=${dd.gid}&uid=${dd.uid}`,
 						})
 					}, 1000);
 				} else {

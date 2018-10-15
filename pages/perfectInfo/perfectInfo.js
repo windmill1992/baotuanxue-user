@@ -44,7 +44,9 @@ Page({
 						mobile: dd.mobile,
 					});
 					setTimeout(() => {
-						wx.navigateBack();
+						wx.navigateTo({
+							url: '/pages/perfSuc/perfSuc',
+						});
 					}, 1000);
 				} else {
 					if (res.data.resultMsg) {

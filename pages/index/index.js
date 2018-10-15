@@ -18,6 +18,7 @@ Page({
 		} else {
 			this.page = 1;
 			this.getData();
+			wx.hideShareMenu();
 		}
   },
 	getData: function () {
@@ -30,7 +31,7 @@ Page({
 			method: 'POST',
 			header: app.header,
 			data: {
-				groupBuyingStatus: +dd.tab + 1,
+				orderStatus: +dd.tab + 1,
 				pageIndex: this.page,
 				pageSize: 10,
 			},
@@ -44,6 +45,7 @@ Page({
 					if (r.total == 0) {
 						m = 0;
 					}
+					r.list = r.list == null ? [] : r.list;
 					this.setData({ list: [...dd.list, ...r.list], hasmore: m });
 					if (this.data.tab == 0) {
 						this.countdown();
@@ -122,6 +124,14 @@ Page({
 		this.getData();
 	},
 	onShareAppMessage: function (e) {
-		
+		if (e.from == 'button') {
+			let idx = e.target.dataset.index;
+			let dd = this.data.list[idx];
+			return {
+				title: `${dd.originator.userName}邀您参与拼团~`,
+				path: `/pages/detail/detail?id=${dd.groupBuyingId}&gid=${dd.groupId}&uid=${dd.originator.userId}`,
+				imageUrl: dd.cover,
+			}
+		}
 	},
 })

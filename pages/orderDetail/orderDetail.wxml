@@ -1,6 +1,6 @@
 <!--pages/orderDetail/orderDetail.wxml-->
 <view class='container'>
-	<view class='top flex fcen spb'>
+	<view class='top flex fcen spb' wx:if='{{info.payType == 1}}'>
 		<image src='../../img/info_bg.png' class='bg'></image>
 		<view class='left' wx:if='{{info.orderStatus == 1}}'>
 			<view class='txt bold'>还差{{info.groupBuyingNumber - info.buyerList.length}}人成团</view>
@@ -17,8 +17,14 @@
 			<button class='invite' open-type='share'>邀请好友参与</button>
 		</view>
 	</view>
+	<view class='top flex fcen spb' wx:else>
+		<image src='../../img/info_bg.png' class='bg'></image>
+		<view class='left'>
+			<view class='txt bold'>支付成功</view>
+		</view>
+	</view>
 	<view class='mid'>
-		<view class='flex fcen'>
+		<view class='flex fcen' wx:if='{{info.payType == 1}}'>
 			<view class='user-list flex'>
 				<image src='{{item.avatar}}' wx:for='{{info.buyerList}}' wx:key='userId'></image>
 			</view>
@@ -50,6 +56,7 @@
 			<view class='txt5'>下单时间：{{info.createTime}}</view>
 			<view class='txt5'>支付类别：{{info.groupBuyingNumber}}人团</view>
 			<view class='txt5' wx:if='{{info.orderStatus == 1}}'>成交时间：暂未拼成</view>
+			<view class='txt5' wx:elif='{{info.orderStatus == 2}}'>成交时间：{{info.createTime}}</view>
 		</view>
 		<block wx:if='{{info.orderStatus == 1}}'>
 			<view class='btns'>
@@ -60,7 +67,7 @@
 		<block wx:if='{{info.orderStatus == 3}}'>
 			<view class='txt7'>支付费用将在3个工作日原路返回</view>
 		</block>
-		<block wx:if='{{info.orderStatus == 2}}'>
+		<block wx:if='{{info.orderStatus == 2 && info.payType == 1}}'>
 			<view class='btns'>
 				<button class='btn green bold'>已完成</button>
 			</view>
@@ -70,7 +77,7 @@
 			</view>
 			<view class='txt6'>到店请出示二维码核销</view>
 		</block>
-		<block wx:if='{{info.orderStatus == 0}}'>
+		<block wx:elif='{{info.orderStatus == 2 && info.payType == 2}}'>
 			<view class='txt6'>直接购买暂不支持退款</view>
 			<view class='qr flex spc'>
 				<canvas canvas-id='cvs' class='cv'></canvas>
