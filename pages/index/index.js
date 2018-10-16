@@ -80,7 +80,7 @@ Page({
 		let idx = e.currentTarget.dataset.index;
 		let a = this.data.list[idx];
 		wx.navigateTo({
-			url: '/pages/detail/detail?id=' + a.groupBuyingId,
+			url: '/pages/detail/detail?id=' + a.groupBuyingId + '&gid=' + a.groupId,
 		})
 	},
 	changeTab: function (e) {
@@ -91,13 +91,14 @@ Page({
 	},
 	countdown: function () {
 		let f = this.setTime();
-		let timer = setInterval(() => {
+		this.timer = setInterval(() => {
 			f = this.setTime();
-			if (!f) clearInterval(timer);
+			if (!f) clearInterval(this.timer);
 		}, 60000);
 	},
 	setTime: function () {
 		let arr = this.data.list;
+		let arr2 = [];
 		let f = false;
 		for (let v of arr) {
 			let t = v.groupBuyingEndTimeShow;
@@ -105,13 +106,18 @@ Page({
 			let d = t - n;
 			if (d > 1000) {
 				f = true;
+				let hh = Number.parseInt(d / 1000 / 60 / 60);
+				let mm = Number.parseInt(d / 1000 / 60 % 60);
+				v.time = [hh, '小时', mm, '分'].join('');
+				v.groupBuyingEndTimeShow -= 60000;
+				arr2.push(v);
 			}
-			let hh = Number.parseInt(d / 1000 / 60 / 60);
-			let mm = Number.parseInt(d / 1000 / 60 % 60);
-			v.time = [hh, '小时', mm, '分'].join('');
-			v.groupBuyingEndTimeShow -= 60000;
 		}
-		this.setData({ list: arr });
+		let m = this.data.hasmore;
+		if (arr2.length == 0) {
+			m = 0;
+		}
+		this.setData({ list: arr2, hasmore: m });
 		return f;
 	},
 	onPullDownRefresh: function () {
@@ -134,5 +140,8 @@ Page({
 				imageUrl: dd.cover,
 			}
 		}
+	},
+	onUnload: function () {
+		clearInterval(this.timer);
 	},
 })

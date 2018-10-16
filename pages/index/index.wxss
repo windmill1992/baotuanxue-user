@@ -116,6 +116,8 @@
   color: #00bf49;
   font-size: 24rpx;
   border: none;
+	display: inline-block;
+	width: auto;
 }
 
 .item .bot {

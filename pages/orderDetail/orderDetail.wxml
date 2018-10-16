@@ -45,9 +45,13 @@
 			</view>
 			<view>
 				<view class='txt3 bold'>{{groupInfo.proName}}</view>
-				<view class='txt4 bold'>¥<text>{{groupInfo.groupBuyingPrice}}</text></view>
+				<view class='txt4 bold'>¥
+					<text wx:if='{{info.payType == 1}}'>{{groupInfo.groupBuyingPrice}}</text>
+					<text wx:else>{{groupInfo.proPrice}}</text>
+				</view>
 			</view>
-			<view class='price'>已支付{{groupInfo.groupBuyingPrice}}元</view>	
+			<view class='price' wx:if='{{info.payType == 1}}'>已支付{{groupInfo.groupBuyingPrice}}元</view>	
+			<view class='price' wx:else>已支付{{groupInfo.proPrice}}元</view>	
 		</view>
 		<view class='call' bindtap='call'>拨打电话</view>
 		<view class='other'>
@@ -91,7 +95,7 @@
 			</view>
 			<block wx:if='{{!info.writeoff}}'>
 				<view class='txt6'>到店请出示二维码核销</view>
-				<button class='btn green' bindtap='fresh'>刷新</button>
+				<button class='btn green btn1' bindtap='fresh'>刷新</button>
 			</block>
 			<view class='txt6' wx:else>已核销</view>
 		</block>

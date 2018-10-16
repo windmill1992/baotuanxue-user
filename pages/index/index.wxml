@@ -9,24 +9,24 @@
 	<view class='list' wx:if='{{hasmore != 0}}'>
 		<view class='item' wx:for='{{list}}' wx:key='groupId'>
 			<view class='shadow'>
-				<view class='top flex fcen spb' wx:if='{{item.groupBuyingStatus == 1}}'>
+				<view class='top flex fcen spb' wx:if='{{tab == 0}}'>
 					<view class='state'>待成团</view>
 					<view class='time'>距结束还有{{item.time}}</view>
 				</view>
-				<view class='top flex fcen spb' wx:elif='{{item.groupBuyingStatus == 2}}'>
+				<view class='top flex fcen spb' wx:elif='{{tab == 1}}'>
 					<view class='state'>已完成</view>
 				</view>
-				<navigator url='/pages/orderDetail/orderDetail?id={{item.groupId}}&gid={{item.groupBuyingId}}&uid={{uid}}' class='con flex fcen'>
+				<navigator url='/pages/orderDetail/orderDetail?id={{item.groupId}}&gid={{item.groupBuyingId}}&uid={{uid}}' class='con flex fcen' hover-class='none'>
 					<view class='pic fshrink0' style='background-image: url({{item.cover}})'></view>
 					<view class='info flex1 fcol spb'>
 						<view class='title bold'>{{item.proName}}</view>
-						<view class='time2' wx:if='{{item.groupBuyingStatus == 1}}'>下单时间：{{item.bussinessShowTime}}</view>
-						<view class='time2' wx:elif='{{item.groupBuyingStatus == 2}}'>成交时间：{{item.bussinessShowTime}}</view>
-						<view class='num' wx:if='{{item.groupBuyingStatus == 1}}'>{{item.soldQuantity}}人已支付，还差{{item.groupBuyingNumber - item.soldQuantity}}人成团</view>
-						<button class='buy' wx:elif='{{item.groupBuyingStatus == 2}}' catchtap='buys' data-index='{{index}}'>拼团购买</button>
+						<view class='time2' wx:if='{{tab == 0}}'>下单时间：{{item.bussinessShowTime}}</view>
+						<view class='time2' wx:elif='{{tab == 1}}'>成交时间：{{item.bussinessShowTime}}</view>
+						<view class='num' wx:if='{{tab == 2}}'>{{item.soldQuantity}}人已支付，还差{{item.groupBuyingNumber - item.soldQuantity}}人成团</view>
+						<view class='buy' wx:elif='{{tab == 1}}' catchtap='buys' data-index='{{index}}'>拼团购买</view>
 					</view>
 				</navigator>
-				<view class='bot'>
+				<view class='bot' wx:if='{{tab == 0}}'>
 					<button class='invite' open-type='share' data-index='{{index}}'>邀请好友</button>
 				</view>
 			</view>

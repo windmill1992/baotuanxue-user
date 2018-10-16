@@ -17,6 +17,9 @@ Page({
 			let uid = app.header.userId;
 			this.setData({ id: options.id, gid: gid, user: user, uid: uid });
 			this.getData();
+			if (!gid) {
+				wx.hideShareMenu();
+			}
 		} else {
 			wx.redirectTo({
 				url: '/pages/index/index',
@@ -168,9 +171,9 @@ Page({
 	},
 	countdown: function () {
 		let f = this.setTime();
-		let timer = setInterval(() => {
+		this.timer = setInterval(() => {
 			f = this.setTime();
-			if (!f) clearInterval(timer);
+			if (!f) clearInterval(this.timer);
 		}, 60000);
 	},
 	setTime: function () {
@@ -181,20 +184,25 @@ Page({
 		let d = t - n;
 		if (d > 1000) {
 			f = true;
+			let hh = Number.parseInt(d / 1000 / 60 / 60);
+			let mm = Number.parseInt(d / 1000 / 60 % 60);
+			v.time = [hh, '小时', mm, '分'].join('');
+			v.groupBuyingEndTimeShow -= 600000;
+		} else {
+			v.groupBuyingStatus = 3;
 		}
-		let hh = Number.parseInt(d / 1000 / 60 / 60);
-		let mm = Number.parseInt(d / 1000 / 60 % 60);
-		v.time = [hh, '小时', mm, '分'].join('');
-		v.groupBuyingEndTimeShow -= 600000;
 		this.setData({ info: v });
 		return f;
 	},
 	onShareAppMessage: function () {
 		let dd = this.data;
 		return {
-			title: '',
+			title: `${dd.user.nickName}邀请您参与拼团~`,
 			path: `/pages/detail/detail?id=${dd.id}&gid=${dd.gid}`,
 			imageUrl: dd.info.cover,
 		}
+	},
+	onUnload: function () {
+		clearInterval(this.timer);
 	},
 })
