@@ -16,7 +16,7 @@
 				<view class='top flex fcen spb' wx:elif='{{item.groupBuyingStatus == 2}}'>
 					<view class='state'>已完成</view>
 				</view>
-				<navigator url='/pages/orderDetail/orderDetail?id={{item.groupId}}&gid={{item.groupBuyingId}}' class='con flex fcen'>
+				<navigator url='/pages/orderDetail/orderDetail?id={{item.groupId}}&gid={{item.groupBuyingId}}&uid={{uid}}' class='con flex fcen'>
 					<view class='pic fshrink0' style='background-image: url({{item.cover}})'></view>
 					<view class='info flex1 fcol spb'>
 						<view class='title bold'>{{item.proName}}</view>

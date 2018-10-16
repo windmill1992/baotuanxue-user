@@ -44,7 +44,7 @@ Page({
 						mobile: dd.mobile,
 					});
 					setTimeout(() => {
-						wx.navigateTo({
+						wx.redirectTo({
 							url: '/pages/perfSuc/perfSuc',
 						});
 					}, 1000);

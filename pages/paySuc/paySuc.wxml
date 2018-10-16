@@ -4,7 +4,7 @@
 		<image src='../../img/suc.png'></image>
 		<view class='txt'>支付成功</view>
 		<view class='btns'>
-			<navigator url='/pages/orderDetail/orderDetail?id={{id}}' class='btn green bold'>查看订单</navigator>
+			<navigator url='/pages/orderDetail/orderDetail?id={{id}}&gid={{gid}}&uid={{uid}}' open-type='redirect' class='btn green bold'>查看订单</navigator>
 		</view>
 	</view>
 	<view class='box txtC' wx:else>
@@ -14,6 +14,6 @@
 		<view class='btns'>
 			<button class='btn green bold' open-type='share'>邀请好友参与拼团</button>
 		</view>
-		<navigator url='/pages/orderDetail/orderDetail?id={{id}}&gid={{gid}}&uid={{uid}}' hover-class='none' class='txt'>查看订单</navigator>
+		<navigator url='/pages/orderDetail/orderDetail?id={{id}}&gid={{gid}}&uid={{uid}}' open-type='redirect' hover-class='none' class='txt'>查看订单</navigator>
 	</view>
 </view>

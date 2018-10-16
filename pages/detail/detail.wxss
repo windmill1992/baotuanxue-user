@@ -77,15 +77,20 @@
   border-bottom: 1px solid #ccc;
 }
 
+.content {
+	padding-bottom: 50rpx;
+}
+
 .content image {
   width: 100%;
   height: 400rpx;
-  margin-top: 30rpx;
+  margin: 30rpx 0;
 }
 
 .content .txt {
 	font-size: 28rpx;
 	color: #333;
+	text-align: center;
 }
 
 .bot {

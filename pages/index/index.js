@@ -16,6 +16,7 @@ Page({
 				url: '/pages/login/login',
 			})
 		} else {
+			this.setData({ uid: uid });
 			this.page = 1;
 			this.getData();
 			wx.hideShareMenu();
@@ -129,7 +130,7 @@ Page({
 			let dd = this.data.list[idx];
 			return {
 				title: `${dd.originator.userName}邀您参与拼团~`,
-				path: `/pages/detail/detail?id=${dd.groupBuyingId}&gid=${dd.groupId}&uid=${dd.originator.userId}`,
+				path: `/pages/detail/detail?id=${dd.groupBuyingId}&gid=${dd.groupId}`,
 				imageUrl: dd.cover,
 			}
 		}

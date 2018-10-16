@@ -14,7 +14,7 @@ Page({
 		if (options.id) {
 			let user = wx.getStorageSync('user');
 			let gid = options.gid ? options.gid : 0;
-			let uid = options.uid ? options.uid : app.header.userId;
+			let uid = app.header.userId;
 			this.setData({ id: options.id, gid: gid, user: user, uid: uid });
 			this.getData();
 		} else {
@@ -90,7 +90,7 @@ Page({
 				header: app.header,
 				data: {
 					groupBuyingId: this.data.id,
-					groupId: this.data.gid,
+					groupId: t == 1 ? this.data.gid : 0,
 					payType: t,
 				},
 				success: res => {

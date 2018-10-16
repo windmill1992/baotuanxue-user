@@ -92,7 +92,7 @@ Page({
 		let dd = this.data;
 		return {
 			title: `${dd.info.userBaseVO.userName}邀请您参与拼团~`,
-			path: `/pages/detail/detail?id=${dd.id}&gid=${dd.gid}&uid=${dd.uid}`,
+			path: `/pages/detail/detail?id=${dd.id}&gid=${dd.gid}`,
 			imageUrl: dd.groupInfo.cover,
 		}
 	},

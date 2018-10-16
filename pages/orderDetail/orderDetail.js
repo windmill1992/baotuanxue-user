@@ -132,9 +132,12 @@ Page({
 		this.setData({ info: v });
 		return f;
 	},
+	fresh: function () {
+		this.getData();
+	},
 	call: function () {
 		wx.makePhoneCall({
-			phoneNumber: this.info.merchantMobile,
+			phoneNumber: this.data.groupInfo.merchantLinkMobile,
 		})
 	},
   onShareAppMessage: function () {

@@ -58,7 +58,7 @@
 }
 
 .item .shadow {
-  padding: 0 20rpx 30rpx;
+  padding: 20rpx 30rpx;
   box-shadow: 0 6rpx 24rpx #e5e5e5;
   border-radius: 6rpx;
 }

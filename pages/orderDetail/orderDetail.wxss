@@ -1,151 +1,199 @@
 /* pages/orderDetail/orderDetail.wxss */
 
 .top {
-	height: 220rpx;
-	padding: 0 30rpx;
-	position: relative;
+  height: 220rpx;
+  padding: 0 30rpx;
+  position: relative;
 }
+
 .top .bg {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 220rpx;
-	z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 220rpx;
+  z-index: -1;
 }
-.top .txt{
-	font-size: 36rpx;
-	color: #fff;
+
+.top .txt {
+  font-size: 36rpx;
+  color: #fff;
 }
-.top .txt1{
-	font-size: 30rpx;
-	color: #fff;
-	margin-top: 3px;
+
+.top .txt1 {
+  font-size: 30rpx;
+  color: #fff;
+  margin-top: 3px;
 }
-.top .invite{
-	padding: 0 30rpx;
-	color: #fff;
-	font-size: 30rpx;
-	height: 70rpx;
-	line-height: 70rpx;
-	border: 1px solid #fff;
-	border-radius: 6rpx;
+
+.top .invite {
+  padding: 0 30rpx;
+  color: #fff;
+  font-size: 30rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  border: 1px solid #fff;
+  border-radius: 6rpx;
 }
-.mid{
-	padding: 0 30rpx;
+
+.mid {
+  padding: 0 30rpx;
 }
-.mid .user-list{
-	padding: 30rpx 0;
-	max-width: 400rpx;
-	overflow: hidden;
-	flex-wrap: nowrap;
+
+.mid .user-list {
+  padding: 30rpx 0;
+  max-width: 400rpx;
+  overflow: hidden;
+  flex-wrap: nowrap;
 }
-.mid .user-list image{
-	width: 48rpx;
-	height: 48rpx;
-	border-radius: 100%;
-	margin-right: 30rpx;
+
+.mid .user-list image {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 100%;
+  margin-right: 30rpx;
 }
-.mid .txt2{
-	font-size: 24rpx;
-	color: #666;
-	padding: 30rpx 0;
-	background: #fff;
+
+.mid .txt2 {
+  font-size: 24rpx;
+  color: #666;
+  padding: 30rpx 0;
+  background: #fff;
 }
-.mid .user{
-	padding: 30rpx 0;
-	border-bottom: 1px solid #ccc;
+
+.mid .user {
+  padding: 30rpx 0;
+  border-bottom: 1px solid #ccc;
 }
-.mid .user .avatar{
-	width: 48rpx;
-	height: 48rpx;
-	margin-right: 30rpx;
+
+.mid .user .avatar {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 30rpx;
 }
-.mid .user .nick{
-	font-size: 30rpx;
-	color: #333;
-	white-space: nowrap;
-	max-width: 400rpx;
-	overflow: hidden;
-	text-overflow: ellipsis;
+
+.mid .user .nick {
+  font-size: 30rpx;
+  color: #333;
+  white-space: nowrap;
+  max-width: 400rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.mid .user .arr image{
-	width: 20rpx;
-	height: 40rpx;
+
+.mid .user .arr image {
+  width: 20rpx;
+  height: 40rpx;
 }
+
 .mid .info {
-	padding: 30rpx 0 50rpx;
-	border-bottom: 1px solid #ccc;
-	position: relative;
+  padding: 30rpx 0 50rpx;
+  border-bottom: 1px solid #ccc;
+  position: relative;
 }
-.mid .pic{
-	width: 160rpx;
-	height: 160rpx;
-	border-radius: 6rpx;
-	margin-right: 30rpx;
+
+.mid .pic {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 6rpx;
+  margin-right: 30rpx;
 }
-.mid .pic image{
-	width: 100%;
-	height: 100%;
-	border-radius: inherit;
+
+.mid .pic image {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
 }
-.mid .txt3{
-	font-size: 36rpx;
-	color: #333;
+
+.mid .txt3 {
+  font-size: 36rpx;
+  color: #333;
 }
-.mid .txt4{
-	font-size: 24rpx;
-	color: #333;
-	margin-top: 30rpx;
-	line-height: 1;
+
+.mid .txt4 {
+  font-size: 24rpx;
+  color: #333;
+  margin-top: 30rpx;
+  line-height: 1;
 }
-.mid .txt4 text{
-	font-size: 36rpx;
+
+.mid .txt4 text {
+  font-size: 36rpx;
 }
-.mid .price{
-	position: absolute;
-	right: 0;
-	bottom: 30rpx;
-	color: #666;
-	font-size: 24rpx;
+
+.mid .price {
+  position: absolute;
+  right: 0;
+  bottom: 30rpx;
+  color: #666;
+  font-size: 24rpx;
 }
-.mid .call{
-	padding: 30rpx 0;
-	text-align: center;
-	font-size: 30rpx;
-	color: #333;
-	border-bottom: 1px solid #ccc;
+
+.mid .call {
+  padding: 30rpx 0;
+  text-align: center;
+  font-size: 30rpx;
+  color: #333;
+  border-bottom: 1px solid #ccc;
 }
+
 .mid .other {
-	padding: 50rpx 0;
+  padding: 50rpx 0;
 }
-.mid .other .txt5{
-	font-size: 24rpx;
-	line-height: 36rpx;
-	color: #333;
+
+.mid .other .txt5 {
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #333;
 }
-.mid .btns{
-	margin-top: 30rpx;
+
+.mid .btns {
+  margin-top: 30rpx;
 }
-.mid .txt6{
-	font-size: 24rpx;
-	color: #333;
-	text-align: center;
-	padding: 30rpx 0;
-	line-height: 1.5;
+
+.mid .txt6 {
+  font-size: 24rpx;
+  color: #333;
+  text-align: center;
+  padding: 30rpx 0;
+  line-height: 1.5;
+  margin-top: 30rpx;
 }
-.mid .txt7{
-	font-size: 30rpx;
-	color: #999;
-	margin-top: 120rpx;
-	margin-bottom: 30rpx;
-	text-align: center;
+
+.mid .txt7 {
+  font-size: 30rpx;
+  color: #999;
+  margin-top: 120rpx;
+  margin-bottom: 30rpx;
+  text-align: center;
 }
-.mid .qr{
-	padding: 40rpx 0;
+
+.mid .qr {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  margin: 40rpx auto 0;
 }
-.mid .qr .cv{
-	/* border: 1px solid #00bf49; */
-	width: 150px;
-	height: 150px;
+
+.mid .qr .cv {
+  /* border: 1px solid #00bf49; */
+  width: 150px;
+  height: 150px;
+}
+
+.mid .qr .mask {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 28rpx;
+}
+
+.mid .btn {
+  width: 120rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  margin: 10rpx auto;
+  font-size: 28rpx;
+  margin-bottom: 30rpx;
 }
