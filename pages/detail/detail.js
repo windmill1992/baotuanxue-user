@@ -14,8 +14,7 @@ Page({
 		if (options.id) {
 			let user = wx.getStorageSync('user');
 			let gid = options.gid ? options.gid : 0;
-			let uid = app.header.userId;
-			this.setData({ id: options.id, gid: gid, user: user, uid: uid });
+			this.setData({ id: options.id, gid: gid, user: user });
 			this.getData();
 			if (!gid) {
 				wx.hideShareMenu();
@@ -24,8 +23,7 @@ Page({
 			const scene = decodeURIComponent(options.scene);
 			let arr = scene.split('_');
 			let user = wx.getStorageSync('user');
-			let uid = app.header.userId;
-			this.setData({ id: arr[1], gid: 0, user: user, uid: uid });
+			this.setData({ id: arr[1], gid: 0, user: user });
 			this.getData();
 			wx.hideShareMenu();
 		} else {
@@ -34,6 +32,15 @@ Page({
 			})
 		}
   },
+	onShow: function () {
+		let uid = wx.getStorageSync('userId');
+		if (!uid) {
+			uid = app.header.userId;
+		} else {
+			app.header.userId = uid;
+		}
+		this.setData({ uid: uid });
+	},
 	getData: function () {
 		wx.showLoading({
 			title: '加载中...',

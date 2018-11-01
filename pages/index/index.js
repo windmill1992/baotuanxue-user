@@ -17,6 +17,7 @@ Page({
 			})
 		} else {
 			this.setData({ uid: uid });
+			app.header.userId = uid;
 			this.page = 1;
 			this.getData();
 			wx.hideShareMenu();
