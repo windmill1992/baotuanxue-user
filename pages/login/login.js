@@ -41,8 +41,21 @@ Page({
 					wx.setStorageSync('userId', r.userId);
 					setTimeout(() => {
 						let uInfo = wx.getStorageSync('uInfo');
-						if (uInfo) {
-							wx.navigateBack();
+						if (uInfo || r.mobile) {
+							let pages = getCurrentPages();
+							if (!uInfo) {
+								wx.setStorageSync('uInfo', {
+									userName: r.userName,
+									mobile: r.mobile,
+								})
+							}
+							if (pages.length >= 2) {
+								wx.navigateBack();
+							} else {
+								wx.reLaunch({
+									url: '/pages/index/index',
+								})
+							}
 						} else {
 							wx.redirectTo({
 								url: `/pages/perfectInfo/perfectInfo`,

@@ -7,8 +7,13 @@ Page({
 
   },
 	know: function () {
-		wx.navigateBack({
-			delta: 2,
-		})
+		let pages = getCurrentPages();
+		if (pages.length >= 2) {
+			wx.navigateBack();
+		} else {
+			wx.reLaunch({
+				url: '/pages/index/index',
+			})
+		}
 	},
 })

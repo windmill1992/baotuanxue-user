@@ -90,10 +90,12 @@ Page({
 	},
 	onShareAppMessage: function () {
 		let dd = this.data;
+		let name = dd.info ? dd.info.userBaseVO.userName : '';
+		let cover = dd.groupInfo ? dd.groupInfo.cover : '../../img/logo.png';
 		return {
-			title: `${dd.info.userBaseVO.userName}邀请您参与拼团~`,
+			title: `${name}邀请您参与拼团~`,
 			path: `/pages/detail/detail?id=${dd.id}&gid=${dd.gid}`,
-			imageUrl: dd.groupInfo.cover,
+			imageUrl: cover,
 		}
 	},
 })

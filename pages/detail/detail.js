@@ -20,6 +20,14 @@ Page({
 			if (!gid) {
 				wx.hideShareMenu();
 			}
+		} else if (options.scene) {
+			const scene = decodeURIComponent(options.scene);
+			let arr = scene.split('_');
+			let user = wx.getStorageSync('user');
+			let uid = app.header.userId;
+			this.setData({ id: arr[1], gid: 0, user: user, uid: uid });
+			this.getData();
+			wx.hideShareMenu();
 		} else {
 			wx.redirectTo({
 				url: '/pages/index/index',
@@ -42,7 +50,14 @@ Page({
 			success: res => {
 				if (res.data.resultCode == 200 && res.data.resultData) {
 					let r = res.data.resultData;
-					this.setData({ info: r });
+					let d = false;
+					for (let v of r.groupBuyingExtendInfoVOList) {
+						if (v.url) {
+							d = true;
+							break;
+						}
+					}
+					this.setData({ info: r, haspic: d });
 					if (r.groupBuyingStatus == 1) {
 						this.countdown();
 					}

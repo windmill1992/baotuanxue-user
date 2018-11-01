@@ -93,6 +93,13 @@
 	text-align: center;
 }
 
+.content .no {
+	text-align: center;
+	color: #999;
+	font-size: 26rpx;
+	margin: 40rpx 0;
+}
+
 .bot {
   position: fixed;
   bottom: 0;
