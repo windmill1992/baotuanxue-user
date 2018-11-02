@@ -23,6 +23,14 @@ Page({
 			wx.hideShareMenu();
 		}
   },
+	onShow: function () {
+		let uid = wx.getStorageSync('userId');
+		if (!uid) {
+			uid = app.header.userId;
+		} else {
+			app.header.userId = uid;
+		}
+	},
 	getData: function () {
 		let dd = this.data;
 		wx.showLoading({
