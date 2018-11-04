@@ -1,7 +1,7 @@
 // pages/orderDetail/orderDetail.js
 const app = getApp().globalData;
 const api = {
-	orderInfo: app.baseUrl + '/btx/btx-rest/writeOff-order-info',		//订单详情
+	orderInfo: app.baseUrl + '/btx/btx-rest/order-info',						//订单详情
 	groupInfo: app.baseUrl + '/btx/btx-rest/group-buying-info',			//拼团详情
 };
 const QRCode = require('../../utils/qrcode.js');
@@ -10,6 +10,7 @@ Page({
 		
   },
   onLoad: function (options) {
+		console.log(options);
 		if (options.id) {
 			this.setData({ id: options.id, gid: options.gid, uid: options.uid });
 			this.getData();
@@ -25,10 +26,14 @@ Page({
 		});
 		let dd = this.data;
 		wx.request({
-			url: api.orderInfo + '?groupBuyingId=' + dd.id + '&groupId=' + dd.gid + '&buyUserId='+ dd.uid,
-			method: 'POST',
+			url: api.orderInfo,
+			method: 'GET',
 			header: app.header,
-			data: {},
+			data: {
+				groupBuyingId: dd.id,
+				groupId: dd.gid,
+				buyUserId: dd.uid,
+			},
 			success: res => {
 				if (res.data.resultCode == 200 && res.data.resultData) {
 					this.setData({ info: res.data.resultData });
@@ -145,8 +150,9 @@ Page({
   onShareAppMessage: function () {
 		let dd = this.data;
 		let dd2 = dd.groupInfo;
+		let name = wx.getStorageSync('user').nickName;
 		return {
-			title: `${dd.info.userBaseVO.userName}邀您参与拼团~`,
+			title: `${name}邀您参与拼团~`,
 			path: `/pages/detail/detail?id=${dd.id}&gid=${dd.gid}`,
 			imageUrl: dd2.cover,
 		}

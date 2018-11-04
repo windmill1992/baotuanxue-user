@@ -30,10 +30,10 @@
 			</view>
 			<view class='txt2'>{{info.buyerList.length}}人已支付</view>
 		</view>
-		<navigator url='/pages/storeInfo/storeInfo?uid={{info.buyerList[0].userId}}' class='user flex spb fcen'>
+		<navigator url='/pages/storeInfo/storeInfo?uid={{groupInfo.userId}}' class='user flex spb fcen'>
 			<view class='flex fcen'>
-				<image src='{{info.buyerList[0].avatar}}' class='avatar'></image>
-				<view class='nick'>{{info.buyerList[0].userName}}</view>
+				<image src='{{groupInfo.merchantAvatar}}' class='avatar'></image>
+				<view class='nick'>{{groupInfo.merchantName}}</view>
 			</view>
 			<view class='arr'>
 				<image src='../../img/more.png'></image>
@@ -70,7 +70,7 @@
 			<view class='txt6'>联系平台，申请退款</view>
 		</block>
 		<block wx:if='{{info.orderStatus == 3}}'>
-			<view class='txt7'>支付费用将在3个工作日原路返回</view>
+			<!-- <view class='txt7'>支付费用将在3个工作日原路返回</view> -->
 		</block>
 		<block wx:if='{{info.orderStatus == 2 && info.payType == 1}}'>
 			<view class='btns'>
@@ -83,7 +83,7 @@
 			</view>
 			<block wx:if='{{!info.writeoff}}'>
 				<view class='txt6'>到店请出示二维码核销</view>
-				<button class='btn green' bindtap='fresh'>刷新</button>
+				<button class='btn green btn1' bindtap='fresh'>刷新</button>
 			</block>
 			<view class='txt6' wx:else>已核销</view>
 		</block>

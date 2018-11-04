@@ -15,5 +15,6 @@
 		"navigationBarBackgroundColor": "#fff",
 		"navigationBarTitleText": "",
 		"navigationBarTextStyle": "black"
-	}
+	},
+	"navigateToMiniProgramAppIdList": ["wx8be304a009404d19"]
 }

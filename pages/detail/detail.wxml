@@ -30,9 +30,13 @@
 		</view>
 	</view>
 	<view class='bot flex'>
-		<navigator target='miniProgram' app-id='wx8be304a009404d19' path='/pages/index/index' class='btn1 fcol spc fcen'>
+		<navigator target='miniProgram' app-id='wx8be304a009404d19' open-type='navigate' 
+			path='/pages/index/index' version='develop' bindsuccess="success" class='btn1 fcol spc fcen'>
 			<view class='txt1'>我也要发起</view>
 		</navigator>
+		<!-- <view class='btn1 fcol spc fcen' bindtap='toMini'>
+			<view class='txt1'>我也要发起</view>
+		</view> -->
 		<view class='btn2 fcol spc fcen' bindtap='buy' data-type='2'>
 			<view class='num1'>¥{{info.proPrice}}</view>
 			<view class='txt2 bold'>单独购买</view>

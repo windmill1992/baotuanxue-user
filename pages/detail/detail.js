@@ -120,8 +120,8 @@ Page({
 				},
 				success: res => {
 					if (res.data.resultCode == 200 && res.data.resultData) {
-						this.setData({ gid: res.data.resultData });
-						this.submit(t);
+						// this.setData({ gid: res.data.resultData });
+						this.submit(t, res.data.resultData);
 					} else {
 						wx.hideLoading();
 						if (res.data.resultMsg) {
@@ -147,10 +147,10 @@ Page({
 			})
 		}
 	},
-	submit: function (t) {
+	submit: function (t, gid) {
 		let dd = this.data;
 		wx.request({
-			url: api.buyCallback + '?groupBuyingId=' + dd.id + '&groupId=' + dd.gid,
+			url: api.buyCallback + '?groupBuyingId=' + dd.id + '&groupId=' + gid,
 			method: 'POST',
 			header: app.header,
 			data: {},
@@ -161,7 +161,7 @@ Page({
 					});
 					setTimeout(() => {
 						wx.navigateTo({
-							url: `/pages/paySuc/paySuc?id=${dd.id}&gid=${dd.gid}&uid=${dd.uid}`,
+							url: `/pages/paySuc/paySuc?id=${dd.id}&gid=${gid}&uid=${dd.uid}`,
 						})
 					}, 1000);
 				} else {
@@ -215,6 +215,15 @@ Page({
 		}
 		this.setData({ info: v });
 		return f;
+	},
+	toMini: function () {
+		wx.navigateToMiniProgram({
+			appId: 'wx8be304a009404d19',
+			path: '/pages/index/index',
+		})
+	},
+	success: function (e) {
+		console.log(e);
 	},
 	onShareAppMessage: function () {
 		let dd = this.data;

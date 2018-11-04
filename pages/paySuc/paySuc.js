@@ -1,7 +1,7 @@
 // pages/paySuc/paySuc.js
 const app = getApp().globalData;
 const api = {
-	orderInfo: app.baseUrl + '/btx/btx-rest/writeOff-order-info',			//核销订单详情
+	orderInfo: app.baseUrl + '/btx/btx-rest/order-info',							//订单详情
 	groupInfo: app.baseUrl + '/btx/btx-rest/group-buying-info',				//拼团详情
 }
 Page({
@@ -20,10 +20,14 @@ Page({
 		});
 		let dd = this.data;
 		wx.request({
-			url: api.orderInfo + '?groupBuyingId=' + dd.id + '&groupId=' + dd.gid + '&buyUserId=' + dd.uid,
-			method: 'POST',
+			url: api.orderInfo,
+			method: 'GET',
 			header: app.header,
-			data: {},
+			data: {
+				groupBuyingId: dd.id,
+				groupId: dd.gid,
+				buyUserId: dd.uid,
+			},
 			success: res => {
 				if (res.data.resultCode == 200 && res.data.resultData) {
 					this.setData({ info: res.data.resultData });
@@ -90,7 +94,7 @@ Page({
 	},
 	onShareAppMessage: function () {
 		let dd = this.data;
-		let name = dd.info ? dd.info.userBaseVO.userName : '';
+		let name = wx.getStorageSync('user').nickName;
 		let cover = dd.groupInfo ? dd.groupInfo.cover : '../../img/logo.png';
 		return {
 			title: `${name}邀请您参与拼团~`,
