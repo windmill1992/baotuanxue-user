@@ -16,14 +16,21 @@
 				<view class='top flex fcen spb' wx:elif='{{tab == 1}}'>
 					<view class='state'>已完成</view>
 				</view>
+				<view class='top flex fcen spb' wx:else>
+					<view class='state'>已失败</view>
+				</view>
 				<navigator url='/pages/orderDetail/orderDetail?id={{item.groupBuyingId}}&gid={{item.groupId}}&uid={{uid}}' class='con flex fcen' hover-class='none'>
 					<view class='pic fshrink0' style='background-image: url({{item.cover}})'></view>
 					<view class='info flex1 fcol spb'>
 						<view class='title bold'>{{item.proName}}</view>
-						<view class='time2' wx:if='{{tab == 0}}'>下单时间：{{item.bussinessShowTime}}</view>
+						<view class='time2' wx:if='{{tab == 0 || tab == 2}}'>下单时间：{{item.bussinessShowTime}}</view>
 						<view class='time2' wx:elif='{{tab == 1}}'>成交时间：{{item.bussinessShowTime}}</view>
-						<view class='num' wx:if='{{tab == 2}}'>{{item.soldQuantity}}人已支付，还差{{item.groupBuyingNumber - item.soldQuantity}}人成团</view>
-						<view class='buy' wx:elif='{{tab == 1}}' catchtap='buys' data-index='{{index}}'>拼团购买</view>
+						<view class='num' wx:if='{{tab == 0}}'>{{item.soldQuantity}}人已支付，还差{{item.groupBuyingNumber - item.soldQuantity}}人成团</view>
+						<view class='buy' wx:elif='{{tab == 1}}' catchtap='buys' data-index='{{index}}'>
+							<block wx:if='{{item.payType == 1}}'>拼团购买</block>
+							<block wx:if='{{item.payType == 2}}'>直接购买</block>
+						</view>
+						<view class='buy' wx:elif='{{tab == 2}}'>超时未拼团成功</view>
 					</view>
 				</navigator>
 				<view class='bot' wx:if='{{tab == 0}}'>

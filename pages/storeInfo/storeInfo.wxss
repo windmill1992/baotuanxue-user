@@ -160,6 +160,10 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
 }
 
+.tel-box .txt.bd{
+	border-bottom: 1px solid #f0f0f0;
+}
+
 .tel-box .bot-d {
   background: #fff;
   position: absolute;

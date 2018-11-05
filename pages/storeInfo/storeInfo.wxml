@@ -46,7 +46,7 @@
 		<view class='mask'></view>
 		<view class='con'>
 			<view class='top-d'>
-				<view class='txt'>{{info.linkMobile}}</view>
+				<view class='txt bd'>{{info.linkMobile}}</view>
 				<button class='txt' bindtap='call'>呼叫</button>
 			</view>
 			<view class='bot-d txt' bindtap='closeTel'>取消</view>

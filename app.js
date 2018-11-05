@@ -1,10 +1,10 @@
 //app.js
 App({
   onLaunch: function () {
-    let prod = wx.getStorageSync('prod001');
+    let prod = wx.getStorageSync('prod0021');
 		if (prod != 1) {
 			wx.clearStorageSync();
-			wx.setStorageSync('prod001', 1);
+			wx.setStorageSync('prod0021', 1);
 		}
 		if (wx.getUpdateManager) {
 			const updateManager = wx.getUpdateManager();
@@ -35,7 +35,7 @@ App({
 		}
   },
   globalData: {
-		baseUrl: 'http://api.baotuanxue.com',
+		baseUrl: 'https://api.baotuanxue.com',
 		header: {
 			// 'content-type': 'application/x-www-form-urlencoded',
 			'content-type': 'application/json',
