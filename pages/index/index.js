@@ -93,6 +93,7 @@ Page({
 		})
 	},
 	changeTab: function (e) {
+		clearInterval(this.timer);
 		let t = e.currentTarget.dataset.tab;
 		this.setData({ tab: t });
 		this.page = 1;
