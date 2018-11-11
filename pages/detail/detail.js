@@ -3,7 +3,6 @@ const app = getApp().globalData;
 const api = {
 	groupInfo: app.baseUrl + '/btx/btx-rest/group-buying-info', 		//拼团信息
 	buyGroup: app.baseUrl + '/btx/btx-rest/click-buy',					 		//购买
-	buyCallback: app.baseUrl + '/btx/btx-rest/buy-callback',				//支付回调
 }
 Page({
   data: {
@@ -109,83 +108,80 @@ Page({
 			wx.showLoading({
 				title: '正在提交...',
 			});
-			wx.request({
-				url: api.buyGroup,
-				method: 'POST',
-				header: app.header,
-				data: {
-					groupBuyingId: this.data.id,
-					groupId: t == 1 ? this.data.gid : 0,
-					payType: t,
-				},
+			wx.login({
 				success: res => {
-					if (res.data.resultCode == 200 && res.data.resultData) {
-						// this.setData({ gid: res.data.resultData });
-						this.submit(t, res.data.resultData);
-					} else {
-						wx.hideLoading();
-						if (res.data.resultMsg) {
+					wx.request({
+						url: api.buyGroup,
+						method: 'POST',
+						header: app.header,
+						data: {
+							groupBuyingId: this.data.id,
+							groupId: t == 1 ? this.data.gid : 0,
+							payType: t,
+							wxCode: res.code,
+						},
+						success: res1 => {
+							if (res1.data.resultCode == 200 && res1.data.resultData) {
+								this.submit(t, res1.data.resultData);
+							} else {
+								wx.hideLoading();
+								if (res1.data.resultMsg) {
+									wx.showToast({
+										title: res1.data.resultMsg,
+										icon: 'none',
+									})
+								} else {
+									wx.showToast({
+										title: '服务器开了小差，请稍后再试！',
+										icon: 'none',
+									})
+								}
+							}
+						},
+						fail: err => {
+							wx.hideLoading();
 							wx.showToast({
-								title: res.data.resultMsg,
+								title: '未知异常！',
 								icon: 'none',
 							})
-						} else {
-							wx.showToast({
-								title: '服务器开了小差，请稍后再试！',
-								icon: 'none',
-							})
-						}
-					}
-				},
-				fail: err => {
-					wx.hideLoading();
-					wx.showToast({
-						title: '未知异常！',
-						icon: 'none',
+						},
 					})
 				},
+				fail: () => {
+					wx.showToast({
+						title: '获取code失败！',
+						icon: 'none',
+					});
+					wx.hideLoading();
+				}
 			})
 		}
 	},
-	submit: function (t, gid) {
+	submit: function (t, obj) {
 		let dd = this.data;
-		wx.request({
-			url: api.buyCallback + '?groupBuyingId=' + dd.id + '&groupId=' + gid,
-			method: 'POST',
-			header: app.header,
-			data: {},
+		wx.requestPayment({
+			timeStamp: obj.timeStamp,
+			nonceStr: obj.nonceStr,
+			signType: 'MD5',
+			package: obj.package,
+			paySign: obj.paySign,
 			success: res => {
-				if (res.data.resultCode == 200 && res.data.resultData) {
-					wx.showToast({
-						title: '购买成功',
-					});
-					setTimeout(() => {
-						wx.navigateTo({
-							url: `/pages/paySuc/paySuc?id=${dd.id}&gid=${gid}&uid=${dd.uid}`,
-						})
-					}, 1000);
-				} else {
-					wx.hideLoading();
-					if (res.data.resultMsg) {
-						wx.showToast({
-							title: res.data.resultMsg,
-							icon: 'none',
-						})
-					} else {
-						wx.showToast({
-							title: '服务器开了小差，请稍后再试！',
-							icon: 'none',
-						})
-					}
-				}
+				console.log(res);
+				wx.showToast({
+					title: '购买成功',
+				});
+				setTimeout(() => {
+					wx.navigateTo({
+						url: `/pages/paySuc/paySuc?id=${dd.id}&gid=${obj.groupId}&uid=${dd.uid}`,
+					})
+				}, 1000);
 			},
 			fail: err => {
 				wx.showToast({
-					title: '未知异常！',
+					title: '购买失败！',
 					icon: 'none',
 				})
 			},
-
 			complete: () => {
 				wx.hideLoading();
 			}
