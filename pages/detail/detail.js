@@ -39,6 +39,10 @@ Page({
 			app.header.userId = uid;
 		}
 		this.setData({ uid: uid });
+		let gid = wx.getStorageSync('sucGid');
+		if (gid) {
+			this.setData({ gid: gid });
+		}
 	},
 	getData: function () {
 		wx.showLoading({
@@ -170,6 +174,7 @@ Page({
 				wx.showToast({
 					title: '购买成功',
 				});
+				wx.setStorageSync('sucGid', obj.groupId);
 				setTimeout(() => {
 					wx.navigateTo({
 						url: `/pages/paySuc/paySuc?id=${dd.id}&gid=${obj.groupId}&uid=${dd.uid}`,

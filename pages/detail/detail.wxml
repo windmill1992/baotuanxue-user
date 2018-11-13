@@ -4,7 +4,7 @@
 		<image src='{{info.cover}}' mode='widthFix'></image>
 		<view class='time' wx:if='{{info.groupBuyingStatus == 1}}'>距离结束还有{{info.time}}</view>
 		<view class='time' wx:elif='{{info.groupBuyingStatus == 2}}'>已完成</view>
-		<view class='time' wx:elif='{{info.groupBuyingStatus == 3}}'>已失败</view>
+		<view class='time' wx:elif='{{info.groupBuyingStatus == 3}}'>已结束</view>
 	</view>
 	<view class='info'>
 		<view class='title bold'>{{info.proName}}</view>
