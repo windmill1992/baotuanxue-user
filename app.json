@@ -8,7 +8,8 @@
 		"pages/detail/detail",
 		"pages/orderDetail/orderDetail",
 		"pages/storeInfo/storeInfo",
-		"pages/paySuc/paySuc"
+		"pages/paySuc/paySuc",
+		"pages/share/share"
 	],
 	"window": {
 		"backgroundTextStyle": "light",
@@ -16,5 +17,7 @@
 		"navigationBarTitleText": "",
 		"navigationBarTextStyle": "black"
 	},
-	"navigateToMiniProgramAppIdList": ["wx8be304a009404d19"]
+	"navigateToMiniProgramAppIdList": [
+		"wx8be304a009404d19"
+	]
 }

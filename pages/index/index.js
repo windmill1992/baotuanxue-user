@@ -8,6 +8,7 @@ Page({
 		tab: 0,
 		hasmore: -1,
 		list: [],
+		showDialog: false,
   },
   onLoad: function () {
 		let uid = wx.getStorageSync('userId');
@@ -99,6 +100,10 @@ Page({
 		this.page = 1;
 		this.getData();
 	},
+	invite: function (e) {
+		let i = e.currentTarget.dataset.index;
+		this.setData({ shareIndex: i, showDialog: true });
+	},
 	countdown: function () {
 		let f = this.setTime();
 		this.timer = setInterval(() => {
@@ -119,7 +124,7 @@ Page({
 				let hh = Number.parseInt(d / 1000 / 60 / 60);
 				let mm = Number.parseInt(d / 1000 / 60 % 60);
 				v.time = [hh, '小时', mm, '分'].join('');
-				v.groupBuyingEndTimeShow -= 60000;
+				// v.groupBuyingEndTimeShow -= 60000;
 				arr2.push(v);
 			}
 		}
@@ -129,6 +134,13 @@ Page({
 		}
 		this.setData({ list: arr2, hasmore: m });
 		return f;
+	},
+	navToShare: function () {
+		let dd = this.data;
+		this.setData({ showDialog: false });
+		wx.navigateTo({
+			url: '/pages/share/share?id=' + dd.list[dd.shareIndex].groupBuyingId,
+		})
 	},
 	onPullDownRefresh: function () {
 		wx.stopPullDownRefresh();
@@ -142,14 +154,18 @@ Page({
 	},
 	onShareAppMessage: function (e) {
 		if (e.from == 'button') {
-			let idx = e.target.dataset.index;
+			let idx = this.data.shareIndex;
 			let dd = this.data.list[idx];
+			this.setData({ showDialog: false });
 			return {
 				title: `${dd.originator.userName}邀您参与拼团~`,
 				path: `/pages/detail/detail?id=${dd.groupBuyingId}&gid=${dd.groupId}`,
 				imageUrl: dd.cover,
 			}
 		}
+	},
+	closeShare: function () {
+		this.setData({ showDialog: false });
 	},
 	onUnload: function () {
 		clearInterval(this.timer);

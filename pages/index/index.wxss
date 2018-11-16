@@ -1,4 +1,5 @@
 /**index.wxss**/
+@import '../../utils/dialog.wxss';
 
 .container {
   background: #f0f0f0;
@@ -132,4 +133,29 @@
   font-size: 30rpx;
   line-height: 84rpx;
   height: 88rpx;
+}
+
+.share-d .dialog_inner {
+	border-radius: 10rpx;
+	font-size: 28rpx;
+	padding: 0;
+}
+.share-d .txt{
+	font-size: 30rpx;
+	padding: 30rpx;
+}
+
+.share-d .btns{
+	margin-top: 30rpx;
+	border-top: 1px solid #f3f3f3;
+}
+
+.share-d .btn{
+	width: 100%;
+	color: #000;
+	position: relative;
+}
+.share-d .btn1{
+	color: #00bf49;
+	border-left: 1px solid #f3f3f3;
 }

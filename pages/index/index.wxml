@@ -34,7 +34,8 @@
 					</view>
 				</navigator>
 				<view class='bot' wx:if='{{tab == 0}}'>
-					<button class='invite' open-type='share' data-index='{{index}}'>邀请好友</button>
+					<view class='invite' data-index='{{index}}' bindtap='invite'>邀请好友</view>
+					<!-- <button class='invite' open-type='share' data-index='{{index}}'>邀请好友</button> -->
 				</view>
 			</view>
 		</view>
@@ -44,4 +45,14 @@
 		<view class='txt'>暂无拼团数据哦~</view>
 	</view>
 	<view class='loadmore no' wx:if='{{hasmore == 1}}'>没有更多数据了</view>
+	<view class='dialog share-d {{showDialog ? "show" : ""}}'>
+		<view class='mask' bindtap='closeShare'></view>
+		<view class='dialog_inner'>
+			<view class='txt'>选择邀请方式：</view>
+			<view class='btns flex'>
+				<button class='btn' bindtap='navToShare'>分享海报</button>
+				<button class='btn btn1' open-type='share'>邀请好友</button>
+			</view>
+		</view>
+	</view>
 </view>
