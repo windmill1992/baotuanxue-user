@@ -117,8 +117,8 @@
   color: #00bf49;
   font-size: 24rpx;
   border: none;
-	display: inline-block;
-	width: auto;
+  display: inline-block;
+  width: auto;
 }
 
 .item .bot {
@@ -136,26 +136,28 @@
 }
 
 .share-d .dialog_inner {
-	border-radius: 10rpx;
-	font-size: 28rpx;
-	padding: 0;
-}
-.share-d .txt{
-	font-size: 30rpx;
-	padding: 30rpx;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  padding: 0;
 }
 
-.share-d .btns{
-	margin-top: 30rpx;
-	border-top: 1px solid #f3f3f3;
+.share-d .txt {
+  font-size: 30rpx;
+  padding: 30rpx;
 }
 
-.share-d .btn{
-	width: 100%;
-	color: #000;
-	position: relative;
+.share-d .btns {
+  margin-top: 30rpx;
+  border-top: 1px solid #f3f3f3;
 }
-.share-d .btn1{
-	color: #00bf49;
-	border-left: 1px solid #f3f3f3;
+
+.share-d .btn {
+  width: 100%;
+  color: #000;
+  position: relative;
+}
+
+.share-d .btn1 {
+  color: #00bf49;
+  border-left: 1px solid #f3f3f3;
 }

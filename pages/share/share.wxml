@@ -5,7 +5,7 @@
 		<view class='nick'>{{info.merchantName}}发起了一个拼团</view>
 	</view>
 	<view class='cover'>
-		<image src='{{info.cover}}' mode='widthFix'></image>
+		<image src='{{info.cover}}' mode='widthFix' bindload='getProp'></image>
 	</view>
 	<view class='name bold'>{{info.proName}}</view>
 	<view class='infos flex spb'>
@@ -17,4 +17,8 @@
 		<image src='{{info.shareCodeUrl}}'></image>
 	</view>
 	<view class='txt'>扫码参与拼团</view>
+	<button class='btn green' open-type='openSetting' bindopensetting='openSetting' wx:if='{{canIUse && refuseAuth}}'>保存图片</button>
+	<button class='btn green' bindtap='makeShareImg' wx:else>保存图片</button>
 </view>
+<view class='tips' wx:if='{{toast.show}}'>{{toast.title}}</view>
+<canvas canvas-id='cv' class='canvas'></canvas>

@@ -50,7 +50,7 @@
 		<view class='dialog_inner'>
 			<view class='txt'>选择邀请方式：</view>
 			<view class='btns flex'>
-				<button class='btn' bindtap='navToShare'>分享海报</button>
+				<button class='btn' bindtap='navToShare'>保存海报</button>
 				<button class='btn btn1' open-type='share'>邀请好友</button>
 			</view>
 		</view>

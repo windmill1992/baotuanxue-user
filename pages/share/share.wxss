@@ -60,3 +60,15 @@
   margin-top: 30rpx;
 	text-align: center;
 }
+
+.btn {
+	margin-top: 30rpx;
+}
+
+.canvas {
+  width: 1500rpx;
+  height: 2668rpx;
+  position: fixed;
+  top: 0;
+  left: -10000px;
+}

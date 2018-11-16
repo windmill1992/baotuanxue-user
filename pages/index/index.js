@@ -2,7 +2,7 @@
 const app = getApp().globalData;
 const api = {
 	orderList: app.baseUrl + '/btx/btx-rest/order-list',		//订单列表
-}
+};
 Page({
   data: {
 		tab: 0,
