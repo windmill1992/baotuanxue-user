@@ -44,6 +44,9 @@ Page({
 			this.setData({ gid: gid });
 		}
 	},
+	onUnload: function () {
+		wx.removeStorageSync('sucGid');
+	},
 	getData: function () {
 		wx.showLoading({
 			title: '加载中...',
@@ -174,7 +177,9 @@ Page({
 				wx.showToast({
 					title: '购买成功',
 				});
-				wx.setStorageSync('sucGid', obj.groupId);
+				if (t == 1) {
+					wx.setStorageSync('sucGid', obj.groupId);
+				}
 				setTimeout(() => {
 					wx.navigateTo({
 						url: `/pages/paySuc/paySuc?id=${dd.id}&gid=${obj.groupId}&uid=${dd.uid}`,

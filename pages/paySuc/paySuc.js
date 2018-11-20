@@ -96,9 +96,13 @@ Page({
 		let dd = this.data;
 		let name = wx.getStorageSync('user').nickName;
 		let cover = dd.groupInfo ? dd.groupInfo.cover : '../../img/logo.png';
+		let query = `?id=${dd.id}`;
+		if (dd.info.orderStatus == 1) {
+			query += `&gid=${dd.gid}`;
+		}
 		return {
 			title: `${name}邀请您参与拼团~`,
-			path: `/pages/detail/detail?id=${dd.id}&gid=${dd.gid}`,
+			path: `/pages/detail/detail${query}`,
 			imageUrl: cover,
 		}
 	},

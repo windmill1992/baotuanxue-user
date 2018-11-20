@@ -154,9 +154,10 @@ Page({
 	},
 	onShareAppMessage: function (e) {
 		if (e.from == 'button') {
-			let idx = this.data.shareIndex;
+			// let idx = this.data.shareIndex;
+			let idx = e.currentTarget.dataset.index;
 			let dd = this.data.list[idx];
-			this.setData({ showDialog: false });
+			// this.setData({ showDialog: false });
 			return {
 				title: `${dd.originator.userName}邀您参与拼团~`,
 				path: `/pages/detail/detail?id=${dd.groupBuyingId}&gid=${dd.groupId}`,

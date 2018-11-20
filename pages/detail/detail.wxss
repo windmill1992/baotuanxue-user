@@ -84,7 +84,7 @@
 .content image {
   width: 100%;
   height: 400rpx;
-  margin: 30rpx 0;
+	vertical-align: top;
 }
 
 .content .txt {
