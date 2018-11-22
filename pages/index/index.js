@@ -153,13 +153,15 @@ Page({
 		this.getData();
 	},
 	onShareAppMessage: function (e) {
+		console.log(e);
 		if (e.from == 'button') {
 			// let idx = this.data.shareIndex;
-			let idx = e.currentTarget.dataset.index;
+			let idx = e.target.dataset.index;
 			let dd = this.data.list[idx];
 			// this.setData({ showDialog: false });
+			let uname = wx.getStorageSync('user').nickName;
 			return {
-				title: `${dd.originator.userName}邀您参与拼团~`,
+				title: `${uname}邀您参与拼团~`,
 				path: `/pages/detail/detail?id=${dd.groupBuyingId}&gid=${dd.groupId}`,
 				imageUrl: dd.cover,
 			}
