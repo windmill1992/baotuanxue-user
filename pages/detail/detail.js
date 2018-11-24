@@ -10,6 +10,7 @@ Page({
 		showShare: false,
   },
   onLoad: function (options) {
+		wx.removeStorageSync('sucGid');
 		if (options.id) {
 			let user = wx.getStorageSync('user');
 			let gid = options.gid ? options.gid : 0;
